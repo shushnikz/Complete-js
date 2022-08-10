@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- With Javascript write a simple from validation -->
+    <form onsubmit="formsubmit(event)">
+        <label for="username">UserName:</label>
+        <input type="text" name="" id="username" required>
+        <span id="errorname"></span>
+        <br><br>
+
+        <label for="Password">Password</label>
+        <input type="password" name="" id="Password" required>
+        <span id="errorpwd"></span>
+        <br><br>
+
+        <input type="submit" value="Submit">
+
+        <script>
+            function formsubmit(event){
+                event.preventDefault();
+                console.log(event)
+
+                var username=document.getElementById('username')
+                var Password=document.getElementById('Password')
+                var errorname=document.getElementById('errorname')
+                var errorpwd=document.getElementById('errorpwd')
+
+                if(username.value.length<5){
+                    console.log("less than 5")
+                    errorname.innerText="username characters should be greater than 5"
+                }
+
+                if(Password.value.length<5){
+                    errorpwd.innerText="Weak Password"
+                    console.log(Password.value.length)
+                }
+                else if(Password.value.length>5 && Password.value.length<10){
+                    errorpwd.innerText="Strong Password"
+                    console.log(Password.value.length)
+                }
+                else if(Password.value.length>10){
+                    errorpwd.innerText="Password length should not be more than 9 characters"
+                }
+            }
+        </script>
+    </form>
+</body>
+</html>
